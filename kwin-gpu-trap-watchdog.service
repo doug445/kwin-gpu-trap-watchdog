@@ -1,0 +1,13 @@
+[Unit]
+Description=Restart KWin on nouveau GPU trap flood (instead of a frozen session)
+PartOf=graphical-session.target
+After=plasma-kwin_wayland.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/kwin-gpu-trap-watchdog
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
